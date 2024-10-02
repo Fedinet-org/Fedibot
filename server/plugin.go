@@ -8,6 +8,11 @@ import (
 	"github.com/mattermost/mattermost/server/public/plugin"
 )
 
+// const (
+// 	botUserName    = "fedibot"
+// 	botDisplayName = "Fedibot"
+// )
+
 // Plugin implements the interface expected by the Mattermost server to communicate between the server and plugin processes.
 type Plugin struct {
 	plugin.MattermostPlugin
