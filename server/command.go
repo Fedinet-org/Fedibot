@@ -54,8 +54,10 @@ func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*mo
 
 	for _, channelName := range channels {
 		channel := &model.Channel{
-			TeamId: team.Id,
-			Name:   channelName,
+			TeamId:      team.Id,
+			Name:        channelName,
+			Type:        model.ChannelTypeOpen,
+			DisplayName: channelName,
 		}
 
 		channel, err := p.API.CreateChannel(channel)
@@ -66,6 +68,11 @@ func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*mo
 			}, nil
 		}
 	}
+
+	return &model.CommandResponse{
+		ResponseType: model.CommandResponseTypeEphemeral,
+		Text:         "Team and channels created successfully",
+	}, nil
 }
 
 // Parse the command arguments
